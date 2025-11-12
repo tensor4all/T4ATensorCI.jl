@@ -1,7 +1,7 @@
-using TensorCrossInterpolation
+using T4ATensorCI
 using Test
 using LinearAlgebra
-import TensorCrossInterpolation: IndexSet, MultiIndex, CachedFunction, TensorCI1, linkdims, addpivot!, addglobalpivot!, evaluate
+import T4ATensorCI: IndexSet, MultiIndex, CachedFunction, TensorCI1, linkdims, addpivot!, addglobalpivot!, evaluate
 
 @testset "TensorCI1" begin
     @testset "trivial MPS" begin

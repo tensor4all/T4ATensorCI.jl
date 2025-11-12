@@ -1,7 +1,7 @@
 module TCIITensorConversion
 
-import TensorCrossInterpolation as TCI
-import TensorCrossInterpolation: evaluate
+import T4ATensorCI as TCI
+import T4ATensorCI: evaluate
 
 using ITensors
 import ITensorMPS

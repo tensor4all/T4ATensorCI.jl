@@ -1,6 +1,6 @@
 using Test
-import TensorCrossInterpolation as TCI
-import TensorCrossInterpolation: MatrixLUCI
+import T4ATensorCI as TCI
+import T4ATensorCI: MatrixLUCI
 
 @testset "Test MatrixLUCI" begin
     @testset "Approximation in LUCI" begin

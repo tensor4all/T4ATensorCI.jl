@@ -1,5 +1,5 @@
-import TensorCrossInterpolation as TCI
-using TensorCrossInterpolation
+import T4ATensorCI as TCI
+using T4ATensorCI
 using Random
 
 function _tomat(tto::TensorTrain{T,4}) where {T}
@@ -99,7 +99,7 @@ end
 end
 
 @testset "Contraction, batchevaluate" begin
-    import TensorCrossInterpolation: TensorTrain
+    import T4ATensorCI: TensorTrain
 
     N = 4
     bonddims_a = [1, 2, 3, 2, 1]

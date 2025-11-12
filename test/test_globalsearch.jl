@@ -1,6 +1,6 @@
 using Test
-import TensorCrossInterpolation as TCI
-import TensorCrossInterpolation: crossinterpolate2, MultiIndex
+import T4ATensorCI as TCI
+import T4ATensorCI: crossinterpolate2, MultiIndex
 import Random
 import QuanticsGrids as QD
 

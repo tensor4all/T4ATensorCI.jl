@@ -1,6 +1,6 @@
 using Test
-import TensorCrossInterpolation as TCI
-import TensorCrossInterpolation: rank, linkdims, TensorCI2, updatepivots!, addglobalpivots1sitesweep!, MultiIndex, evaluate, crossinterpolate2, pivoterror, tensortrain, optimize!
+import T4ATensorCI as TCI
+import T4ATensorCI: rank, linkdims, TensorCI2, updatepivots!, addglobalpivots1sitesweep!, MultiIndex, evaluate, crossinterpolate2, pivoterror, tensortrain, optimize!
 import Random
 import Random: AbstractRNG
 import QuanticsGrids as QD
