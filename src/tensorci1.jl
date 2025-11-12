@@ -180,20 +180,22 @@ function evaluate(
         for p in 1:length(tci))[1, 1]
 end
 
-function getPiIset(tci::TensorCI1{V}, p::Int) where {V}
-    return IndexSet([
-        [is..., ups] for is in tci.Iset[p].fromint, ups in 1:tci.localdims[p]
-    ][:])
+function getPiIset(tci::TensorCI1{V}, p::Int)::IndexSet{MultiIndex} where {V}
+    result::Vector{MultiIndex} = [
+        MultiIndex([is..., ups]) for is in tci.Iset[p].fromint, ups in 1:tci.localdims[p]
+    ][:]
+    return IndexSet(result)
 end
 
-function getPiJset(tci::TensorCI1{V}, p::Int) where {V}
-    return IndexSet([
-        [up1s, js...] for up1s in 1:tci.localdims[p], js in tci.Jset[p].fromint
-    ][:])
+function getPiJset(tci::TensorCI1{V}, p::Int)::IndexSet{MultiIndex} where {V}
+    result::Vector{MultiIndex} = [
+        MultiIndex([up1s, js...]) for up1s in 1:tci.localdims[p], js in tci.Jset[p].fromint
+    ][:]
+    return IndexSet(result)
 end
 
 """
-    buildPiAt(tci::TensorCrossInterpolation{V}, p::Int)
+    buildPiAt(tci::T4ATensorCI{V}, p::Int)
 
 Build a 4-legged ``\\Pi`` tensor at site `p`. Indices are in the order ``i, u_p, u_{p + 1}, j``, as in the TCI paper.
 """

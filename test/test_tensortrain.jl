@@ -1,4 +1,4 @@
-import TensorCrossInterpolation as TCI
+import T4ATensorCI as TCI
 import LinearAlgebra as LA
 using Random
 using Zygote

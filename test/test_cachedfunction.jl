@@ -1,6 +1,6 @@
 using Test
-import TensorCrossInterpolation as TCI
-import TensorCrossInterpolation: BatchEvaluator, MultiIndex
+import T4ATensorCI as TCI
+import T4ATensorCI: BatchEvaluator, MultiIndex
 import BitIntegers
 struct TestF <: TCI.BatchEvaluator{Float64}
 end

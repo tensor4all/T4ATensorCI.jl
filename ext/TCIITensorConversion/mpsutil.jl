@@ -8,7 +8,7 @@ Evaluates an MPS or MPO for a given set of index values.
 
 - `indexspec` is a list of tuples, where each tuple contains an `ITensorMPS.Index` object specifying an index, and an `Int` corresponding to the value of the specified index.
 
-If many evaluations are necessary, it may be advantageous to convert your MPS to a [`TensorCrossInterpolation.TTCache`](@ref) object first.
+If many evaluations are necessary, it may be advantageous to convert your MPS to a [`T4ATensorCI.TTCache`](@ref) object first.
 """
 function evaluate(
     mps::Union{ITensorMPS.MPS,ITensorMPS.MPO},
@@ -39,7 +39,7 @@ Evaluates an MPS or MPO for a given set of index values.
 - `indices` is a list of `ITensors.Index` objects that specifies the order in which indices are given.
 - `indexvalues` is a list of integer values in the same order as `indices`.
 
-If many evaluations are necessary, it may be advantageous to convert your MPS to a [`TensorCrossInterpolation.TTCache`](@ref) object first.
+If many evaluations are necessary, it may be advantageous to convert your MPS to a [`T4ATensorCI.TTCache`](@ref) object first.
 """
 function evaluate(
     mps::Union{ITensorMPS.MPS,ITensorMPS.MPO},
