@@ -1,7 +1,7 @@
 name = "T4ATensorCI"
 uuid = "14428447-6903-48c7-83df-f2cb08af9918"
 authors = ["Ritter.Marc <Ritter.Marc@physik.uni-muenchen.de>, Hiroshi Shinaoka <h.shinaoka@gmail.com> and contributors"]
-version = "0.9.18"
+version = "0.10.0"
 
 [deps]
 BitIntegers = "c3b6d118-76ef-56ca-8cc7-ebb389d030a1"
