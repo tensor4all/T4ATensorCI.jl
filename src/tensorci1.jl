@@ -181,13 +181,13 @@ function evaluate(
 end
 
 function getPiIset(tci::TensorCI1{V}, p::Int) where {V}
-    return IndexSet{MultiIndex}([
+    return IndexSet([
         [is..., ups] for is in tci.Iset[p].fromint, ups in 1:tci.localdims[p]
     ][:])
 end
 
 function getPiJset(tci::TensorCI1{V}, p::Int) where {V}
-    return IndexSet{MultiIndex}([
+    return IndexSet([
         [up1s, js...] for up1s in 1:tci.localdims[p], js in tci.Jset[p].fromint
     ][:])
 end
@@ -233,7 +233,7 @@ function updatePirows!(tci::TensorCI1{V}, p::Int, f::F) where {V,F}
     diffIset = setdiff(newIset.fromint, tci.PiIset[p].fromint)
     newPi = Matrix{V}(undef, length(newIset), size(tci.Pi[p], 2))
 
-    permutation::Vector{Int} = [pos(newIset, imulti) for imulti in tci.PiIset[p].fromint]
+    permutation = [pos(newIset, imulti) for imulti in tci.PiIset[p].fromint]
     newPi[permutation, :] = tci.Pi[p]
 
     for imulti in diffIset
@@ -255,7 +255,7 @@ function updatePicols!(tci::TensorCI1{V}, p::Int, f::F) where {V,F}
     diffJset = setdiff(newJset.fromint, tci.PiJset[p+1].fromint)
     newPi = Matrix{V}(undef, size(tci.Pi[p], 1), length(newJset))
 
-    permutation::Vector{Int} = [pos(newJset, jmulti) for jmulti in tci.PiJset[p+1].fromint]
+    permutation = [pos(newJset, jmulti) for jmulti in tci.PiJset[p+1].fromint]
     newPi[:, permutation] = tci.Pi[p]
 
     for jmulti in diffJset
