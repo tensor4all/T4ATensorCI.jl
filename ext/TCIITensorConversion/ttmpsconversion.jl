@@ -82,11 +82,23 @@ Converts an `ITensorMPS.MPS` object into a TensorTrain. Note that this only work
 function TCI.TensorTrain(mps::ITensorMPS.MPS)
     links = ITensorMPS.linkinds(mps)
     sites = ITensors.SiteTypes.siteinds(mps)
-    Tfirst = zeros(ComplexF64, 1, dim(sites[1]), dim(links[1]))
+    
+    # Detect scalar type from input tensors by promoting all element types
+    T = eltype(Array(mps[1], sites[1], links[1]))
+    for i in 2:length(mps)-1
+        Ti = eltype(Array(mps[i], links[i-1], sites[i], links[i]))
+        T = promote_type(T, Ti)
+    end
+    if length(mps) > 1
+        Ti = eltype(Array(mps[end], links[end], sites[end]))
+        T = promote_type(T, Ti)
+    end
+    
+    Tfirst = zeros(T, 1, dim(sites[1]), dim(links[1]))
     Tfirst[1, :, :] = Array(mps[1], sites[1], links[1])
-    Tlast =  zeros(ComplexF64, dim(links[end]), dim(sites[end]), 1)
+    Tlast = zeros(T, dim(links[end]), dim(sites[end]), 1)
     Tlast[:, :, 1] = Array(mps[end], links[end], sites[end])
-    return TCI.TensorTrain{ComplexF64,3}(
+    return TCI.TensorTrain{T,3}(
         vcat(
             [Tfirst],
             [Array(mps[i], links[i-1], sites[i], links[i]) for i in 2:length(mps)-1],
@@ -108,10 +120,12 @@ function TCI.TensorTrain{V, N}(mpo::ITensorMPS.MPO; sites=nothing) where {N, V}
         error("Site indices do not correspond to the site indices of the MPO.")
     end
 
-    Tfirst = zeros(ComplexF64, 1, dim.(sites[1])..., dim(links[1]))
+    # Use the specified type parameter V
+    # Conversion errors will be raised when Array() is called if types are incompatible
+    Tfirst = zeros(V, 1, dim.(sites[1])..., dim(links[1]))
     Tfirst[1, fill(Colon(), length(sites[1]) + 1)...] = Array(mpo[1], sites[1]..., links[1])
 
-    Tlast =  zeros(ComplexF64, dim(links[end]), dim.(sites[end])..., 1)
+    Tlast = zeros(V, dim(links[end]), dim.(sites[end])..., 1)
     Tlast[fill(Colon(), length(sites[end]) + 1)..., 1] = Array(mpo[end], links[end], sites[end]...)
 
     return TCI.TensorTrain{V, N}(

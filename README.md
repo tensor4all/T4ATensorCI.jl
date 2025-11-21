@@ -47,14 +47,7 @@ An example with more explanation can be found in the [user manual](https://tenso
 
 ## Related modules
 
-### [TCIITensorConversion.jl](https://github.com/tensor4all/tciitensorconversion.jl)
-A small helper module for easy conversion of `TensorCI1`, `TensorCI2` and `TensorTrain` objects into ITensors `MPS` objects. This should be helpful for those integrating TCI into a larger tensor network algorithm.
-For this conversion, simply call the `MPS` constructor on the object:
-```julia
-mps = MPS(tci)
-```
-
-### [QuanticsTCI.jl](https://github.com/tensor4all/QuanticsTCI.jl)
+### [T4AQuanticsTCI.jl](https://github.com/tensor4all/T4AQuanticsTCI.jl)
 A module that implements the *quantics representation* and combines it with TCI for exponentially efficient interpolation of functions with scale separation.
 
 ## Contributions
