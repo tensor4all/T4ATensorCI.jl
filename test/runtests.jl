@@ -24,3 +24,6 @@ include("test_globalsearch.jl")
 
 # TCIITensorConversion extension
 include("test_TCIITensorConversion.jl")
+
+# TCIT4AITensorCompatConversion extension
+include("test_TCIT4AITensorCompatConversion.jl")
