@@ -14,7 +14,7 @@ concurrency:
 # needed to allow julia-actions/cache to delete old caches that it has created
 permissions:
   actions: write
-  contents: read
+  contents: write
 jobs:
   test:
     name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
@@ -44,6 +44,15 @@ jobs:
           Pkg.Registry.add(
             RegistrySpec(url = "https://github.com/tensor4all/T4ARegistry.git")
           )'
+      - name: Develop extracted dependencies (temporary)
+        run: |
+          julia --project=@. -e '
+          using Pkg
+          Pkg.develop([
+            PackageSpec(url = "https://github.com/tensor4all/T4AMatrixCI.jl.git", rev = "main"),
+            PackageSpec(url = "https://github.com/tensor4all/T4ATensorTrain.jl.git", rev = "fix/t4aitensorcompat-uuid"),
+          ])
+          Pkg.instantiate()'
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
@@ -65,6 +74,15 @@ jobs:
           Pkg.Registry.add(
             RegistrySpec(url = "https://github.com/tensor4all/T4ARegistry.git")
           )'
+      - name: Develop extracted dependencies (temporary)
+        run: |
+          julia --project=@. -e '
+          using Pkg
+          Pkg.develop([
+            PackageSpec(url = "https://github.com/tensor4all/T4AMatrixCI.jl.git", rev = "main"),
+            PackageSpec(url = "https://github.com/tensor4all/T4ATensorTrain.jl.git", rev = "fix/t4aitensorcompat-uuid"),
+          ])
+          Pkg.instantiate()'
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-docdeploy@v1
         env:
