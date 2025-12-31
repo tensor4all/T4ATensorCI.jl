@@ -3,3 +3,9 @@
 *.jl.mem
 /Manifest.toml
 /docs/build/
+
+# Local logs and build artifacts (do not commit)
+*.log
+/docs/Manifest.toml
+/docs/*.log
+/docs_build.log

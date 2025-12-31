@@ -1,25 +1,3 @@
-function MatrixACA(lu::rrLU{T}) where {T}
-    aca = MatrixACA(T, size(lu)...)
-    aca.rowindices = rowindices(lu)
-    aca.colindices = colindices(lu)
-    aca.u = left(lu)
-    aca.v = right(lu)
-    aca.alpha = 1 ./ diag(lu)
-
-    if lu.leftorthogonal
-        # Set the permuted diagonal of aca.u to the diagonal elements of lu.
-        for j in axes(aca.u, 2)
-            aca.u[:, j] *= diag(lu)[j]
-        end
-    else
-        # Same with aca.v
-        for i in axes(aca.v, 1)
-            aca.v[i, :] *= diag(lu)[i]
-        end
-    end
-    return aca
-end
-
 function TensorCI1{ValueType}(
     tci2::TensorCI2{ValueType},
     f;
