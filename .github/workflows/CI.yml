@@ -86,6 +86,18 @@ jobs:
           ])
           Pkg.instantiate()'
       - uses: julia-actions/julia-buildpkg@v1
+      - name: Instantiate docs environment (pin extracted dependencies)
+        run: |
+          julia --project=docs/ -e '
+          using Pkg
+          # Ensure default registries are available
+          Pkg.Registry.add()
+          # Pin extracted packages by URL to avoid relying on registry metadata during docs builds
+          Pkg.add([
+            PackageSpec(url = "https://github.com/tensor4all/T4AMatrixCI.jl.git", rev = "main"),
+            PackageSpec(url = "https://github.com/tensor4all/T4ATensorTrain.jl.git", rev = "fix/t4aitensorcompat-uuid"),
+          ])
+          Pkg.instantiate()'
       - uses: julia-actions/julia-docdeploy@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
