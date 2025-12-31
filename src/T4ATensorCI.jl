@@ -84,13 +84,13 @@ export crossinterpolate1, crossinterpolate2, optfirstpivot
 evaluate(args...; kwargs...) = T4ATensorTrain.evaluate(args...; kwargs...)
 
 function evaluate(ci::T4AMatrixCI.MatrixCI, args...; kwargs...)
-    isempty(kwargs) && return T4AMatrixCI.evaluate(ci, args...)
-    return T4AMatrixCI.evaluate(ci, args...; kwargs...)
+    isempty(kwargs) || throw(ArgumentError("Keyword arguments are not supported for evaluate(::MatrixCI, ...)."))
+    return T4AMatrixCI.evaluate(ci, args...)
 end
 
 function evaluate(ci::T4AMatrixCI.MatrixACA, args...; kwargs...)
-    isempty(kwargs) && return T4AMatrixCI.evaluate(ci, args...)
-    return T4AMatrixCI.evaluate(ci, args...; kwargs...)
+    isempty(kwargs) || throw(ArgumentError("Keyword arguments are not supported for evaluate(::MatrixACA, ...)."))
+    return T4AMatrixCI.evaluate(ci, args...)
 end
 export evaluate
 
