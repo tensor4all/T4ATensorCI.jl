@@ -9,6 +9,8 @@ EllipsisNotation = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 QuadGK = "1fd47b50-473d-5c70-9696-f719f8f3bcdc"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+T4AMatrixCI = "c72b89c1-c391-41a7-b711-dfcca653bb47"
+T4ATensorTrain = "ec6ec972-96ae-4a21-b859-3911b77e305f"
 
 [weakdeps]
 ITensorMPS = "0d1a4710-d33b-49a5-8f18-73bdf49b47e2"
@@ -26,6 +28,8 @@ Optim = "1"
 QuadGK = "2.9"
 Random = "1.9.0"
 T4AITensorCompat = "0.8"
+T4AMatrixCI = "0.1"
+T4ATensorTrain = "0.1"
 julia = "1.10"
 
 [extras]

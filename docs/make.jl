@@ -1,3 +1,16 @@
+using Pkg
+
+Pkg.activate(@__DIR__)
+Pkg.develop(PackageSpec(path=joinpath(@__DIR__, "..")))
+for pkgdir in ("T4AMatrixCI.jl", "T4ATensorTrain.jl")
+    local_path = joinpath(@__DIR__, "..", "..", pkgdir)
+    if isdir(local_path)
+        Pkg.develop(PackageSpec(path=local_path))
+    end
+end
+Pkg.resolve()
+Pkg.instantiate()
+
 using T4ATensorCI
 using ITensors
 using ITensorMPS
