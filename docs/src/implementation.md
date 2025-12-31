@@ -50,7 +50,7 @@ This function adds one pivot at bond $\ell$ (in the code, we use `p` instead of 
 
 To add a pivot, we have to add a row and a column to $T_\ell, P_\ell$ and $T_{\ell + 1}$. Afterwards, we update neighbouring $\Pi$ tensors $\Pi_{\ell-1}$ and $\Pi_{\ell+1}$ for efficiency.
 
-- Construct an $MCI$ ([`MatrixCI`](@ref)) object with row indices $I$, column indices $J$, columns $C$ and rows $R$, where:
+- Construct an $MCI$ (`T4AMatrixCI.MatrixCI`) object with row indices $I$, column indices $J$, columns $C$ and rows $R$, where:
     - Row indices $MCI.I \leftarrow \Pi I_\ell [I_{\ell+1}]$
     - Column indices $MCI.J \leftarrow \Pi J_{\ell+1} [J_\ell]$
     - Column vectors $MCI.C \leftarrow \text{reshape}(T_\ell; D_{\ell-1}\times d_\ell, D_{\ell})$

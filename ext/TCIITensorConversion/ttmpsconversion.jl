@@ -77,7 +77,7 @@ end
 """
     function TensorTrain(mps::ITensorMPS.MPS)
 
-Converts an `ITensorMPS.MPS` object into a TensorTrain. Note that this only works if the MPS has a single leg per site. Otherwise, use [`T4ATensorCI.TensorTrain(mps::ITensorMPS.MPO)`](@ref).
+Converts an `ITensorMPS.MPS` object into a TensorTrain. Note that this only works if the MPS has a single leg per site. Otherwise, use `TensorTrain(mpo::ITensorMPS.MPO)`.
 """
 function TCI.TensorTrain(mps::ITensorMPS.MPS)
     links = ITensorMPS.linkinds(mps)
@@ -110,7 +110,7 @@ end
 """
     function TensorTrain(mps::ITensorMPS.MPO)
 
-Converts an `ITensorMPS.MPO` object into a [`T4ATensorCI.TensorTrain`](@ref).
+Converts an `ITensorMPS.MPO` object into a `T4ATensorCI.TensorTrain`.
 """
 function TCI.TensorTrain{V, N}(mpo::ITensorMPS.MPO; sites=nothing) where {N, V}
     links = ITensorMPS.linkinds(mpo)

@@ -41,7 +41,7 @@ println("Sum of original function: $sumorig")
 sumtt = sum(tci)
 println("Sum of tensor train: $sumtt")
 ```
-For further information, see [`sum`](@ref).
+For further information, see `sum`.
 
 This factorized sum can be used for efficient evaluation of high-dimensional integrals. This is implemented with Gauss-Kronrod quadrature rules in [`integrate`](@ref). For example, the integral
 ```math
