@@ -82,8 +82,16 @@ export crossinterpolate1, crossinterpolate2, optfirstpivot
 # -----------------------------------------------------------------------------
 
 evaluate(args...; kwargs...) = T4ATensorTrain.evaluate(args...; kwargs...)
-evaluate(ci::T4AMatrixCI.MatrixCI, args...; kwargs...) = T4AMatrixCI.evaluate(ci, args...; kwargs...)
-evaluate(ci::T4AMatrixCI.MatrixACA, args...; kwargs...) = T4AMatrixCI.evaluate(ci, args...; kwargs...)
+
+function evaluate(ci::T4AMatrixCI.MatrixCI, args...; kwargs...)
+    isempty(kwargs) && return T4AMatrixCI.evaluate(ci, args...)
+    return T4AMatrixCI.evaluate(ci, args...; kwargs...)
+end
+
+function evaluate(ci::T4AMatrixCI.MatrixACA, args...; kwargs...)
+    isempty(kwargs) && return T4AMatrixCI.evaluate(ci, args...)
+    return T4AMatrixCI.evaluate(ci, args...; kwargs...)
+end
 export evaluate
 
 # -----------------------------------------------------------------------------
