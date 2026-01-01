@@ -1,6 +1,6 @@
 name = "T4ATensorCI"
 uuid = "14428447-6903-48c7-83df-f2cb08af9918"
-version = "0.12.0"
+version = "0.12.1"
 authors = ["Ritter.Marc <Ritter.Marc@physik.uni-muenchen.de>, Hiroshi Shinaoka <h.shinaoka@gmail.com> and contributors"]
 
 [deps]
@@ -30,7 +30,7 @@ QuadGK = "2.9"
 Random = "1.9.0"
 T4AITensorCompat = "0.8"
 T4AMatrixCI = "0.1"
-T4ATensorTrain = "0.1"
+T4ATensorTrain = "0.2"
 julia = "1.10"
 
 [extras]
